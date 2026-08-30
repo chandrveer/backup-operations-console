@@ -1,0 +1,54 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  color-scheme: dark;
+}
+html.light {
+  color-scheme: light;
+}
+
+body {
+  @apply bg-base text-base-100 font-body antialiased;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+html.light body {
+  @apply bg-light-bg text-light-text;
+}
+
+::-webkit-scrollbar { width: 10px; height: 10px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: #26313C; border-radius: 8px; }
+html.light ::-webkit-scrollbar-thumb { background: #CBD5E0; }
+
+* { scrollbar-width: thin; scrollbar-color: #26313C transparent; }
+
+@layer components {
+  .panel {
+    @apply bg-surface border border-borderc rounded-xl shadow-card;
+  }
+  html.light .panel {
+    @apply bg-light-surface border-light-border shadow-none;
+  }
+  .panel-raised {
+    @apply bg-surface-raised border border-borderc rounded-xl;
+  }
+  html.light .panel-raised {
+    @apply bg-light-surface border-light-border;
+  }
+  .label-eyebrow {
+    @apply text-[11px] font-mono uppercase tracking-wider text-signal-idle;
+  }
+  .focus-ring {
+    @apply outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2 focus-visible:ring-offset-base;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
