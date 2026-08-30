@@ -1,4 +1,4 @@
-const BASE = "/api";
+const BASE = "https://backup-operations-console.onrender.com/api";
 
 async function request<T>(path: string, options?: RequestInit): Promise<T> {
   const res = await fetch(`${BASE}${path}`, {
